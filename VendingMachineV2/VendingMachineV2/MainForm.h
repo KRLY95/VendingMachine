@@ -34,12 +34,19 @@ namespace VendingMachineV2 {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^ IncrementButton;
+	private: System::Windows::Forms::Label^ counter;
+	private: int counterCount = 0;
+
+	protected:
+
+	protected:
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -48,18 +55,46 @@ namespace VendingMachineV2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->IncrementButton = (gcnew System::Windows::Forms::Button());
+			this->counter = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
+			// 
+			// IncrementButton
+			// 
+			this->IncrementButton->Location = System::Drawing::Point(354, 193);
+			this->IncrementButton->Name = L"IncrementButton";
+			this->IncrementButton->Size = System::Drawing::Size(123, 58);
+			this->IncrementButton->TabIndex = 0;
+			this->IncrementButton->Text = L"Click to Add!";
+			this->IncrementButton->UseVisualStyleBackColor = true;
+			this->IncrementButton->Click += gcnew System::EventHandler(this, &MainForm::IncrementButton_Click);
+			// 
+			// counter
+			// 
+			this->counter->AutoSize = true;
+			this->counter->Location = System::Drawing::Point(384, 170);
+			this->counter->Name = L"counter";
+			this->counter->Size = System::Drawing::Size(18, 20);
+			this->counter->TabIndex = 1;
+			this->counter->Text = L"0";
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(851, 530);
+			this->Controls->Add(this->counter);
+			this->Controls->Add(this->IncrementButton);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
+	private: System::Void IncrementButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		counterCount++;
+		counter->Text = counterCount.ToString();
+	}
 	};
 }
