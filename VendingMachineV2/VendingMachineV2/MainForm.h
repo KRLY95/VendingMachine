@@ -35,8 +35,8 @@ namespace VendingMachineV2 {
 			}
 		}
 	private: System::Windows::Forms::Button^ IncrementButton;
-	private: System::Windows::Forms::Label^ counter;
-	private: int counterCount = 0;
+	public: System::Windows::Forms::Label^ counter;
+	public: int counterCount;
 
 	protected:
 
@@ -92,9 +92,6 @@ namespace VendingMachineV2 {
 
 		}
 #pragma endregion
-	private: System::Void IncrementButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		counterCount++;
-		counter->Text = counterCount.ToString();
-	}
+	private: System::Void IncrementButton_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }
